@@ -83,7 +83,7 @@ def analyse(
     snapshot_date: date,
     api_key: str,
     model: str,
-) -> str:
+) -> tuple[str, anthropic.types.Usage]:
     prompt = build_prompt(balances, positions, snapshot_date)
     client = anthropic.Anthropic(api_key=api_key)
 
@@ -93,4 +93,4 @@ def analyse(
         max_tokens=600,
         messages=[{"role": "user", "content": prompt}],
     )
-    return message.content[0].text
+    return message.content[0].text, message.usage
