@@ -62,14 +62,19 @@ def build_prompt(
 
 ---
 
-Write a concise daily digest covering:
-1. A 2-3 sentence overall portfolio health summary
-2. Notable movers today (day change >±2% or open P&L >±10% of book cost)
-3. Any concentration risk worth flagging (single position >20% of portfolio)
-4. One brief thing to watch this week
+Write a concise mobile push notification digest. Structure it exactly like this:
 
-Tone: direct, no fluff. Use markdown. Keep it under 300 words.
-This is a push notification so lead with the most important thing."""
+**$X,XXX (+Y%)** — one sentence on overall direction.
+
+**Movers:** bullet list of 2-3 notable positions with symbol, open P&L, and one word on why it matters.
+
+**Watch:** one sentence on the single biggest risk or opportunity this week.
+
+Rules:
+- Under 120 words total
+- No tables in the output
+- Markdown bold and bullets only — no headers
+- Lead with the total equity number and P&L"""
 
 
 def analyse(
