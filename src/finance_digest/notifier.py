@@ -17,12 +17,12 @@ def push(ntfy_url: str, summary: str, snapshot_date: date) -> None:
     try:
         resp = requests.post(
             ntfy_url,
-            data=summary.encode("utf-8"),
-            headers={
-                "Title": title,
-                "Priority": "default",
-                "Tags": "chart_increasing",
-                "Markdown": "yes",
+            json={
+                "message": summary,
+                "title": title,
+                "priority": "default",
+                "tags": ["chart_increasing"],
+                "markdown": True,
             },
             timeout=15,
         )
